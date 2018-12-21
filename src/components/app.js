@@ -1,5 +1,8 @@
 import React from 'react';
+import Block from './block';
 
 export default function App() {
-  return <div>hello world!</div>;
+  return (
+    <Block color="limegreen" />
+  );
 }
