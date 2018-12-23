@@ -2,6 +2,11 @@
   "name": "tetris",
   "version": "0.1.0",
   "license": "MIT",
+  "description": "Classic Tetris game",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ahuth/tetris.git"
+  },
   "dependencies": {
     "lodash": "^4.17.11",
     "react": "^16.7.0",
