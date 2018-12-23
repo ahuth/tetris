@@ -10,5 +10,10 @@ export function peek(randomizer) {
 
 export function next(randomizer) {
   const [head, ...tail] = randomizer;
-  return [head, tail.length > 0 ? tail : create()];
+
+  if (tail.length > 0) {
+    return [head, tail];
+  }
+
+  return [head, create()];
 }
