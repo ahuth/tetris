@@ -4,8 +4,8 @@
   "license": "MIT",
   "dependencies": {
     "lodash": "^4.17.11",
-    "react": "^16.7.0-alpha.2",
-    "react-dom": "^16.7.0-alpha.2",
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0",
     "react-scripts": "2.1.1"
   },
   "scripts": {
