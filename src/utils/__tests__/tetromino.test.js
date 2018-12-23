@@ -1,14 +1,19 @@
+import shapes from '../shapes';
 import * as Tetromino from '../tetromino';
 
-test('rotating', () => {
+test('rotate', () => {
   let piece = Tetromino.create('L', 0, 0);
-  expect(piece.orientation).toEqual(0);
+  expect(Tetromino.getShape(piece)).toEqual(shapes.L[0]);
+
   piece = Tetromino.rotate(piece);
-  expect(piece.orientation).toEqual(1);
+  expect(Tetromino.getShape(piece)).toEqual(shapes.L[1]);
+
   piece = Tetromino.rotate(piece);
-  expect(piece.orientation).toEqual(2); 
+  expect(Tetromino.getShape(piece)).toEqual(shapes.L[2]);
+
   piece = Tetromino.rotate(piece);
-  expect(piece.orientation).toEqual(3);
+  expect(Tetromino.getShape(piece)).toEqual(shapes.L[3]);
+
   piece = Tetromino.rotate(piece);
-  expect(piece.orientation).toEqual(0);
+  expect(Tetromino.getShape(piece)).toEqual(shapes.L[0]);
 });
