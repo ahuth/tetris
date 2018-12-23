@@ -14,6 +14,7 @@ import { range, shuffle } from 'lodash';
  * Create a new randomizer object, which is passed in to the other methods in this module to get
  * random numbers.
  * @returns {Randomizer}
+ * @see http://tetris.wikia.com/wiki/Random_Generator
  */
 export function create() {
   return shuffle(range(7));
@@ -32,7 +33,6 @@ export function peek(randomizer) {
  * Get the next number and a new randomizer.
  * @param {Randomizer} randomizer
  * @returns {ReturnValue}
- * @see http://tetris.wikia.com/wiki/Random_Generator
  */
 export function next(randomizer) {
   const [head, ...tail] = randomizer;
