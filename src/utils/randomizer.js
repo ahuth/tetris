@@ -1,6 +1,6 @@
 import { range, shuffle } from 'lodash';
 
-// Create a new randomizer object, whichi s passed in to the other methods in this module to get
+// Create a new randomizer object, which s passed in to the other methods in this module to get
 // random numbers. See http://tetris.wikia.com/wiki/Random_Generator.
 export function create() {
   return shuffle(range(7));
