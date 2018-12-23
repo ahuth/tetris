@@ -2,13 +2,8 @@ import * as Randomizer from '../randomizer';
 
 const pieceValues = [0, 1, 2, 3, 4, 5, 6];
 
-test('creating', () => {
+test('create', () => {
   expect(new Set(Randomizer.create())).toEqual(new Set(pieceValues));
-});
-
-test('peeking', () => {
-  const randomizer = Randomizer.create();
-  expect(pieceValues).toContain(Randomizer.peek(randomizer));
 });
 
 test('next', () => {

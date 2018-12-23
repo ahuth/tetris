@@ -21,15 +21,6 @@ export function create() {
 }
 
 /**
- * See the next number.
- * @param {Randomizer} randomizer
- * @returns {number}
- */
-export function peek(randomizer) {
-  return randomizer[0];
-}
-
-/**
  * Get the next number and a new randomizer.
  * @param {Randomizer} randomizer
  * @returns {ReturnValue}
