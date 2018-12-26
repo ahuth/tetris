@@ -1,11 +1,10 @@
 import shapes from './shapes';
 
 // Create a new Tetromino.
-export function create(type, x, y) {
+export function create(type, point) {
   return {
     type,
-    x,
-    y,
+    point,
     orientation: 0,
   };
 }
