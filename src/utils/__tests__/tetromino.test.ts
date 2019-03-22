@@ -1,8 +1,8 @@
-import shapes from '../shapes';
+import shapes, { ShapeType } from '../shapes';
 import * as Tetromino from '../tetromino';
 
 test('rotate', () => {
-  let piece = Tetromino.create('L');
+  let piece = Tetromino.create(ShapeType.L);
   expect(Tetromino.getShape(piece)).toEqual(shapes.L[0]);
 
   piece = Tetromino.rotate(piece);

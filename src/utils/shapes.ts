@@ -1,3 +1,13 @@
+export enum ShapeType {
+  L = 'L',
+  I = 'I',
+  T = 'T',
+  S = 'S',
+  Z = 'Z',
+  O = 'O',
+  J = 'J',
+}
+
 export default {
   L: [
     [
