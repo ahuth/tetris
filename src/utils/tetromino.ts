@@ -1,17 +1,15 @@
-import shapes, { ShapeType } from './shapes';
-
-type Orientation = 0 | 1 | 2 | 3;
+import shapes, { nextOrientation, ShapeType, ShapeOrientation } from './shapes';
 
 interface Tetromino {
   type: ShapeType;
-  orientation: Orientation;
+  orientation: ShapeOrientation;
 }
 
 // Create a new Tetromino.
 export function create(type: ShapeType): Tetromino {
   return {
     type,
-    orientation: 0,
+    orientation: ShapeOrientation.Up,
   };
 }
 
@@ -26,8 +24,4 @@ export function rotate(piece: Tetromino): Tetromino {
     ...piece,
     orientation: nextOrientation(piece.orientation),
   };
-}
-
-function nextOrientation(n: number) {
-  return (n + 1) % 4 as Orientation;
 }
