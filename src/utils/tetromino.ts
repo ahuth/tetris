@@ -1,8 +1,10 @@
 import shapes, { ShapeType } from './shapes';
 
+type Orientation = 0 | 1 | 2 | 3;
+
 interface Tetromino {
   type: ShapeType;
-  orientation: number;
+  orientation: Orientation;
 }
 
 // Create a new Tetromino.
@@ -27,5 +29,5 @@ export function rotate(piece: Tetromino): Tetromino {
 }
 
 function nextOrientation(n: number) {
-  return (n + 1) % 4;
+  return (n + 1) % 4 as Orientation;
 }
