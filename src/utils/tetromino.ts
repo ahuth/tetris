@@ -19,7 +19,7 @@ export function getShape(piece: Tetromino) {
 }
 
 // Rotate a Tetromino clockwise.
-export function rotate(piece: Tetromino) {
+export function rotate(piece: Tetromino): Tetromino {
   return {
     ...piece,
     orientation: nextOrientation(piece.orientation),
