@@ -19,7 +19,7 @@ export function nextOrientation(n: ShapeOrientation) {
   return (n + 1) % 4 as ShapeOrientation;
 }
 
-export default {
+export const shapes = {
   [ShapeType.L]: {
     [ShapeOrientation.Up]: [
       [0, 0, 1],

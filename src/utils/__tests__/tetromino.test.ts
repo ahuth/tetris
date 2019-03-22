@@ -1,4 +1,4 @@
-import shapes, { ShapeType } from '../shapes';
+import { shapes, ShapeType } from '../shapes';
 import * as Tetromino from '../tetromino';
 
 test('rotate', () => {

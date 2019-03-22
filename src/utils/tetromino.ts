@@ -1,4 +1,9 @@
-import shapes, { nextOrientation, ShapeType, ShapeOrientation } from './shapes';
+import {
+  nextOrientation,
+  shapes,
+  ShapeOrientation,
+  ShapeType,
+} from './shapes';
 
 interface Tetromino {
   type: ShapeType;
