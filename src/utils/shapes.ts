@@ -9,7 +9,7 @@ export enum ShapeType {
 }
 
 export default {
-  L: [
+  [ShapeType.L]: [
     [
       [0, 0, 1],
       [1, 1, 1],
@@ -32,7 +32,7 @@ export default {
     ],
   ],
 
-  I: [
+  [ShapeType.I]: [
     [
       [0, 0, 0, 0],
       [1, 1, 1, 1],
@@ -59,7 +59,7 @@ export default {
     ],
   ],
 
-  T: [
+  [ShapeType.T]: [
     [
       [0, 1, 0],
       [1, 1, 1],
@@ -82,7 +82,7 @@ export default {
     ],
   ],
 
-  S: [
+  [ShapeType.S]: [
     [
       [0, 1, 1],
       [1, 1, 0],
@@ -105,7 +105,7 @@ export default {
     ],
   ],
 
-  Z: [
+  [ShapeType.Z]: [
     [
       [1, 1, 0],
       [0, 1, 1],
@@ -128,7 +128,7 @@ export default {
     ],
   ],
 
-  O: [
+  [ShapeType.O]: [
     [
       [1, 1],
       [1, 1],
@@ -147,7 +147,7 @@ export default {
     ],
   ],
 
-  J: [
+  [ShapeType.J]: [
     [
       [1, 0, 0],
       [1, 1, 1],
