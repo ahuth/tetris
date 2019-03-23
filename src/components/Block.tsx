@@ -10,10 +10,6 @@ export default function Block({ color }: Props) {
   return <div style={styling} />;
 }
 
-Block.defaultProps = {
-  color: 'grey',
-};
-
 function getStyling(color: string) {
   return {
     backgroundColor: color,
