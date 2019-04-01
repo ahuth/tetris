@@ -12,6 +12,7 @@ export default function Block({ color }: Props) {
 
 function getStyling(color: string) {
   return {
+    display: 'inline-block',
     backgroundColor: color,
     height: 20,
     width: 20,

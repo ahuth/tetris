@@ -5,7 +5,7 @@ import {
   ShapeType,
 } from './shapes';
 
-interface Tetromino {
+export interface Tetromino {
   type: ShapeType;
   orientation: ShapeOrientation;
 }

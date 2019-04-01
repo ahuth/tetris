@@ -1,8 +1,12 @@
 import React from 'react';
-import Block from './Block';
+import Piece from './Piece';
+import { ShapeType } from '../utils/shapes';
+import * as Tetromino from '../utils/tetromino';
 
 export default function App() {
+  const tetromino = Tetromino.create(ShapeType.Z);
+
   return (
-    <Block color="limegreen" />
+    <Piece tetromino={tetromino} />
   );
 }
