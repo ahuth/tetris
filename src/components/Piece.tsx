@@ -16,9 +16,9 @@ export default function Piece({ tetromino }: Props) {
           <div key={i} style={styles}>
             {row.map((block, i) => {
               if (block === 0) {
-                return <Block color="black" />;
+                return <Block color="black" key={i} />;
               }
-              return <Block color="limegreen" />;
+              return <Block color="limegreen" key={i} />;
             })}
           </div>
         );
