@@ -7,7 +7,7 @@ test('create', () => {
 });
 
 test('next', () => {
-  const previous = [];
+  const previous: Array<number> = [];
   let next;
   let randomizer;
   randomizer = Randomizer.create();

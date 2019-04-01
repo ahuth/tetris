@@ -1,8 +1,10 @@
 import { range, shuffle } from 'lodash';
 
+type Randomizer = Array<number>;
+
 // Create a new randomizer object, which s passed in to the other methods in this module to get
 // random numbers. See http://tetris.wikia.com/wiki/Random_Generator.
-export function create() {
+export function create(): Randomizer {
   return shuffle(range(7));
 }
 
@@ -12,7 +14,7 @@ export function create() {
 //
 //   [val, randomizer] = next(randomizer);
 //
-export function next(randomizer) {
+export function next(randomizer: Randomizer): [number, Randomizer] {
   const [head, ...tail] = randomizer;
 
   if (tail.length > 0) {
