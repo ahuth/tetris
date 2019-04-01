@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Piece from './Piece';
 import { ShapeType } from '../utils/shapes';
 import * as Tetromino from '../utils/tetromino';
@@ -16,7 +16,7 @@ export default function App() {
     document.addEventListener('keyup', handleKeyUp);
 
     return () => document.removeEventListener('keyup', handleKeyUp);
-  });
+  }, []);
 
   return (
     <Piece tetromino={tetromino} />
