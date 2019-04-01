@@ -1,21 +1,38 @@
-import { shapes, ShapeType, ShapeOrientation } from '../shapes';
 import * as Tetromino from '../tetromino';
 
 test('rotate', () => {
-  const expectedShape = shapes[ShapeType.L];
-
-  let piece = Tetromino.create(ShapeType.L);
-  expect(Tetromino.getShape(piece)).toEqual(expectedShape[ShapeOrientation.Up]);
-
-  piece = Tetromino.rotate(piece);
-  expect(Tetromino.getShape(piece)).toEqual(expectedShape[ShapeOrientation.Right]);
-
-  piece = Tetromino.rotate(piece);
-  expect(Tetromino.getShape(piece)).toEqual(expectedShape[ShapeOrientation.Down]);
+  let piece = Tetromino.create(Tetromino.ShapeType.L);
+  expect(Tetromino.getShape(piece)).toEqual([
+    [0, 0, 1],
+    [1, 1, 1],
+    [0, 0, 0],
+  ]);
 
   piece = Tetromino.rotate(piece);
-  expect(Tetromino.getShape(piece)).toEqual(expectedShape[ShapeOrientation.Left]);
+  expect(Tetromino.getShape(piece)).toEqual([
+    [0, 1, 0],
+    [0, 1, 0],
+    [0, 1, 1],
+  ]);
 
   piece = Tetromino.rotate(piece);
-  expect(Tetromino.getShape(piece)).toEqual(expectedShape[ShapeOrientation.Up]);
+  expect(Tetromino.getShape(piece)).toEqual([
+    [0, 0, 0],
+    [1, 1, 1],
+    [1, 0, 0],
+  ]);
+
+  piece = Tetromino.rotate(piece);
+  expect(Tetromino.getShape(piece)).toEqual([
+    [1, 1, 0],
+    [0, 1, 0],
+    [0, 1, 0],
+  ]);
+
+  piece = Tetromino.rotate(piece);
+  expect(Tetromino.getShape(piece)).toEqual([
+    [0, 0, 1],
+    [1, 1, 1],
+    [0, 0, 0],
+  ]);
 });

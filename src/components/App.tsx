@@ -1,12 +1,11 @@
 import React from 'react';
 import Piece from './Piece';
-import { ShapeType } from '../utils/shapes';
 import * as Tetromino from '../utils/tetromino';
 
 export default function App() {
-  const [tetromino, setTetromino] = React.useState(Tetromino.create(ShapeType.Z));
+  const [tetromino, setTetromino] = React.useState(Tetromino.create(Tetromino.ShapeType.Z));
 
-  useEffect(() => {
+  React.useEffect(() => {
     function handleKeyUp(event: KeyboardEvent) {
       if (event.key === 'ArrowUp') {
         setTetromino(Tetromino.rotate(tetromino));
