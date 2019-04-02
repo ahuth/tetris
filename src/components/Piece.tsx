@@ -1,19 +1,22 @@
 import React from 'react';
-import { getShape, Tetromino } from '../utils/tetromino';
 import Block from './Block';
+import { getShape, Tetromino } from '../utils/tetromino';
+import { Point } from '../utils/point';
 
 type Props = {
+  position: Point,
   tetromino: Tetromino,
 }
 
-export default function Piece({ tetromino }: Props) {
+export default function Piece({ position, tetromino }: Props) {
   const shape = getShape(tetromino);
+  const containerStyles = React.useMemo(() => getContainerStyling(position), [position.x, position.y]);
 
   return (
-    <div>
+    <div style={containerStyles}>
       {shape.map((row, i) => {
         return (
-          <div key={i} style={styles}>
+          <div key={i} style={styles.row}>
             {row.map((block, i) => {
               if (block === 0) {
                 return <Block color="black" key={i} />;
@@ -27,6 +30,16 @@ export default function Piece({ tetromino }: Props) {
   );
 }
 
+function getContainerStyling(position: Point) {
+  return {
+    position: 'absolute' as 'absolute',
+    top: position.y * 20,
+    left: position.x * 20,
+  };
+}
+
 const styles = {
-  height: 20,
+  row: {
+    height: 20,
+  },
 };
