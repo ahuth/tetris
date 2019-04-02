@@ -11,13 +11,14 @@ const initialTetromino = Tetromino.create(firstShape);
 const initialPosition = Point.create(3, 0);
 
 export default function App() {
+  const [position, setPosition] = React.useState(initialPosition);
   const [tetromino, setTetromino] = React.useState(initialTetromino);
 
-  useKeyHandler('ArrowUp', () => {
-    setTetromino(current => Tetromino.rotate(current));
-  });
+  useKeyHandler('ArrowUp', () => setTetromino(prev => Tetromino.rotate(prev)));
+  useKeyHandler('ArrowLeft', () => setPosition(prev => Point.create(prev.x - 1, prev.y)));
+  useKeyHandler('ArrowRight', () => setPosition(prev => Point.create(prev.x + 1, prev.y)));
 
   return (
-    <Board current={tetromino} position={initialPosition} />
+    <Board current={tetromino} position={position} />
   );
 }
