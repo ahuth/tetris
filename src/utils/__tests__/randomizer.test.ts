@@ -1,13 +1,13 @@
 import * as Randomizer from '../randomizer';
 
-const pieceValues = [0, 1, 2, 3, 4, 5, 6];
+const pieceValues = ['L', 'I', 'T', 'S', 'Z', 'O', 'J'];
 
 test('create', () => {
   expect(new Set(Randomizer.create())).toEqual(new Set(pieceValues));
 });
 
 test('next', () => {
-  const previous: Array<number> = [];
+  const previous: Array<string> = [];
   let next;
   let randomizer;
   randomizer = Randomizer.create();
