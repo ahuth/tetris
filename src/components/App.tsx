@@ -8,7 +8,7 @@ export default function App() {
   React.useEffect(() => {
     function handleKeyUp(event: KeyboardEvent) {
       if (event.key === 'ArrowUp') {
-        setTetromino(Tetromino.rotate(tetromino));
+        setTetromino(current => Tetromino.rotate(current));
       }
     }
 
