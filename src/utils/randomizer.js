@@ -1,12 +1,10 @@
-import { range, shuffle } from 'lodash';
+import { shuffle } from 'lodash';
 import { ShapeType } from './tetromino';
-
-type Randomizer = Array<ShapeType>;
 
 // Create a new randomizer object, which s passed in to the other methods in this module to get
 // random numbers. See http://tetris.wikia.com/wiki/Random_Generator.
-export function create(): Randomizer {
-  return shuffle(Object.keys(ShapeType)) as ShapeType[];
+export function create() {
+  return shuffle(Object.keys(ShapeType));
 }
 
 // Retrieve the next number. Returns an array with value and the next randomizer.
@@ -15,7 +13,7 @@ export function create(): Randomizer {
 //
 //   [val, randomizer] = next(randomizer);
 //
-export function next(randomizer: Randomizer): [ShapeType, Randomizer] {
+export function next(randomizer) {
   const [head, ...tail] = randomizer;
 
   if (tail.length > 0) {

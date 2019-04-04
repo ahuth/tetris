@@ -1,8 +1,8 @@
 import React from 'react';
 
-export default function useKeyHandler(key: string, handler: (event?: KeyboardEvent) => void) {
+export default function useKeyHandler(key, handler) {
   React.useEffect(() => {
-    function handleKeyUp(event: KeyboardEvent) {
+    function handleKeyUp(event) {
       if (event.key === key) {
         handler(event);
       }
