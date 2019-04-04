@@ -11,7 +11,7 @@ export default function Board({ current, position }) {
 
 const styles = {
   container: {
-    boxShadow: '0 8px 6px -6px grey',
+    borderBottom: '1px solid grey',
     height: 400,
     position: 'relative',
     width: 200,
