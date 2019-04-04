@@ -1,7 +1,7 @@
 import React from 'react';
 import Piece from './Piece';
 
-export default function Board({ current, position }) {
+export default function Matrix({ current, position }) {
   return (
     <div style={styles.container}>
       <Piece position={position} tetromino={current} />
