@@ -2,6 +2,7 @@ import React from 'react';
 import Matrix from './Matrix';
 import ScoreBoard from './ScoreBoard';
 import useKeyHandler from '../hooks/useKeyHandler';
+import useInterval from '../hooks/useInterval';
 import reducer, { initialState, ActionTypes } from '../reducer';
 
 export default function App() {
@@ -10,6 +11,8 @@ export default function App() {
   useKeyHandler('ArrowUp', () => dispatch(ActionTypes.Rotate));
   useKeyHandler('ArrowLeft', () => dispatch(ActionTypes.MoveLeft));
   useKeyHandler('ArrowRight', () => dispatch(ActionTypes.MoveRight));
+
+  useInterval(state.interval, () => dispatch(ActionTypes.Tick));
 
   return (
     <div style={styles.container}>

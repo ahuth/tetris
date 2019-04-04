@@ -15,6 +15,7 @@ export const StateTypes = {
 export const initialState = {
   current: Tetromino.create(firstShape),
   filled: fill(new Array(200), 0, 0),
+  interval: 750,
   level: 1,
   position: Point.create(3, 0),
   randomizer: randomizer,
