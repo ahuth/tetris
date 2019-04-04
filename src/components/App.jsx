@@ -1,5 +1,6 @@
 import React from 'react';
 import Board from './Board';
+import ScoreBoard from './ScoreBoard';
 import useKeyHandler from '../hooks/useKeyHandler';
 import reducer, { initialState, ActionTypes } from '../reducer';
 
@@ -11,6 +12,9 @@ export default function App() {
   useKeyHandler('ArrowRight', () => dispatch(ActionTypes.Right));
 
   return (
-    <Board current={state.current} position={state.position} />
+    <React.Fragment>
+      <Board current={state.current} position={state.position} />
+      <ScoreBoard level={state.level} score={state.score} />
+    </React.Fragment>
   );
 }

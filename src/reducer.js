@@ -6,8 +6,10 @@ const [firstShape, randomizer] = Randomizer.next(Randomizer.create());
 
 export const initialState = {
   current: Tetromino.create(firstShape),
+  level: 1,
   position: Point.create(3, 0),
   randomizer: randomizer,
+  score: 0,
 }
 
 export const ActionTypes = {
