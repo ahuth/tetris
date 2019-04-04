@@ -5,14 +5,21 @@ import * as Tetromino from './utils/tetromino';
 
 const [firstShape, randomizer] = Randomizer.next(Randomizer.create());
 
+export const StateTypes = {
+  Paused: 0,
+  Playing: 1,
+  Won: 2,
+  Lost: 3,
+};
+
 export const initialState = {
   current: Tetromino.create(firstShape),
   filled: fill(new Array(200), 0, 0),
   level: 1,
-  paused: true,
   position: Point.create(3, 0),
   randomizer: randomizer,
   score: 0,
+  state: StateTypes.Paused,
 }
 
 export const ActionTypes = {
