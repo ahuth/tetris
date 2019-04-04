@@ -16,9 +16,14 @@ export const initialState = {
 }
 
 export const ActionTypes = {
+  MoveDown: 'down',
   MoveLeft: 'left',
   MoveRight: 'right',
+  Reset: 'reset',
   Rotate: 'rotate',
+  Start: 'start',
+  Stop: 'stop',
+  Tick: 'tick',
 };
 
 export default function reducer(state, action) {
