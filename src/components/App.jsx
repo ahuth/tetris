@@ -8,8 +8,8 @@ export default function App() {
   const [state, dispatch] = React.useReducer(reducer, initialState);
 
   useKeyHandler('ArrowUp', () => dispatch(ActionTypes.Rotate));
-  useKeyHandler('ArrowLeft', () => dispatch(ActionTypes.Left));
-  useKeyHandler('ArrowRight', () => dispatch(ActionTypes.Right));
+  useKeyHandler('ArrowLeft', () => dispatch(ActionTypes.MoveLeft));
+  useKeyHandler('ArrowRight', () => dispatch(ActionTypes.MoveRight));
 
   return (
     <React.Fragment>

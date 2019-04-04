@@ -16,27 +16,27 @@ export const initialState = {
 }
 
 export const ActionTypes = {
+  MoveLeft: 'left',
+  MoveRight: 'right',
   Rotate: 'rotate',
-  Right: 'right',
-  Left: 'left',
 };
 
 export default function reducer(state, action) {
   switch (action) {
-    case ActionTypes.Rotate:
+    case ActionTypes.MoveLeft:
       return {
         ...state,
-        current: Tetromino.rotate(state.current),
+        position: Point.create(state.position.x - 1, state.position.y),
       };
-    case ActionTypes.Right:
+    case ActionTypes.MoveRight:
       return {
         ...state,
         position: Point.create(state.position.x + 1, state.position.y),
       };
-    case ActionTypes.Left:
+    case ActionTypes.Rotate:
       return {
         ...state,
-        position: Point.create(state.position.x - 1, state.position.y),
+        current: Tetromino.rotate(state.current),
       };
     default:
       return state;
