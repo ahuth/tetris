@@ -12,9 +12,15 @@ export default function App() {
   useKeyHandler('ArrowRight', () => dispatch(ActionTypes.MoveRight));
 
   return (
-    <React.Fragment>
+    <div style={styles.container}>
       <Matrix current={state.current} position={state.position} />
       <ScoreBoard level={state.level} score={state.score} />
-    </React.Fragment>
+    </div>
   );
 }
+
+const styles = {
+  container: {
+    display: 'flex',
+  },
+};
