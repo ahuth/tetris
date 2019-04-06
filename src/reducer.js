@@ -12,17 +12,6 @@ export const StateTypes = {
   Lost: 3,
 };
 
-export const initialState = {
-  board: Board.create(),
-  current: Tetromino.create(firstShape),
-  interval: 750,
-  level: 1,
-  position: Point.create(3, 0),
-  randomizer: randomizer,
-  score: 0,
-  state: StateTypes.Paused,
-}
-
 export const ActionTypes = {
   MoveDown: 'down',
   MoveLeft: 'left',
@@ -33,6 +22,17 @@ export const ActionTypes = {
   Stop: 'stop',
   Tick: 'tick',
 };
+
+export const initialState = {
+  board: Board.create(),
+  current: Tetromino.create(firstShape),
+  interval: 750,
+  level: 1,
+  position: Point.create(3, 0),
+  randomizer: randomizer,
+  score: 0,
+  state: StateTypes.Paused,
+}
 
 export default function reducer(state, action) {
   switch (action) {
