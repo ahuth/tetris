@@ -15,6 +15,7 @@ export function moveLeft(board, tetromino, position) {
   if (isValid(board, tetromino, potentialPosition)) {
     return potentialPosition;
   }
+
   return position;
 }
 
@@ -25,6 +26,7 @@ export function moveRight(board, tetromino, position) {
   if (isValid(board, tetromino, potentialPosition)) {
     return potentialPosition;
   }
+
   return position;
 }
 
@@ -35,6 +37,7 @@ export function rotate(board, tetromino, position) {
   if (isValid(board, potentialTetromino, position)) {
     return Tetromino.rotate(tetromino);
   }
+
   return tetromino;
 }
 
