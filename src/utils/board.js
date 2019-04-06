@@ -12,7 +12,7 @@ export function create() {
 export function moveLeft(board, tetromino, position) {
   const potentialPosition = Point.create(position.x - 1, position.y);
 
-  if (isValid(board, potentialPosition, position)) {
+  if (isValid(board, tetromino, potentialPosition)) {
     return potentialPosition;
   }
   return position;
@@ -22,7 +22,7 @@ export function moveLeft(board, tetromino, position) {
 export function moveRight(board, tetromino, position) {
   const potentialPosition = Point.create(position.x + 1, position.y);
 
-  if (isValid(board, potentialPosition, position)) {
+  if (isValid(board, tetromino, potentialPosition)) {
     return potentialPosition;
   }
   return position;
