@@ -1,4 +1,4 @@
-import { fill } from 'lodash';
+import * as Board from './utils/board';
 import * as Point from './utils/point';
 import * as Randomizer from './utils/randomizer';
 import * as Tetromino from './utils/tetromino';
@@ -13,8 +13,8 @@ export const StateTypes = {
 };
 
 export const initialState = {
+  board: Board.create(),
   current: Tetromino.create(firstShape),
-  filled: fill(new Array(200), 0, 0),
   interval: 750,
   level: 1,
   position: Point.create(3, 0),
@@ -39,17 +39,17 @@ export default function reducer(state, action) {
     case ActionTypes.MoveLeft:
       return {
         ...state,
-        position: Point.create(state.position.x - 1, state.position.y),
+        position: Board.moveLeft(state.board, state.current, state.position),
       };
     case ActionTypes.MoveRight:
       return {
         ...state,
-        position: Point.create(state.position.x + 1, state.position.y),
+        position: Board.moveRight(state.board, state.current, state.position),
       };
     case ActionTypes.Rotate:
       return {
         ...state,
-        current: Tetromino.rotate(state.current),
+        current: Board.rotate(state.board, state.current, state.position),
       };
     default:
       return state;
