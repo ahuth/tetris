@@ -8,7 +8,7 @@ export default function useKeyHandler(key, handler) {
       }
     }
 
-    document.addEventListener('keyup', handleKeyUp);
+    document.addEventListener('keydown', handleKeyUp);
 
     return () => document.removeEventListener('keyup', handleKeyUp);
   }, [key]);
