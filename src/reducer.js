@@ -36,11 +36,17 @@ export const initialState = {
 
 export default function reducer(state, action) {
   switch (action) {
-    case ActionTypes.MoveDown:
+    case ActionTypes.MoveDown: {
+      const [board, tetromino, position, randomizer] = Board.moveDown(state.board, state.current, state.position, state.randomizer);
+
       return {
         ...state,
-        position: Board.moveDown(state.board, state.current, state.position),
+        board,
+        current: tetromino,
+        position,
+        randomizer,
       };
+     }
     case ActionTypes.MoveLeft:
       return {
         ...state,
