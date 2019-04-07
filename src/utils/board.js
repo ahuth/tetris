@@ -44,5 +44,28 @@ export function rotate(board, tetromino, position) {
 // Determine if a tetromino at a certain position on the board is "valid". In other words, doesn't
 // overlap with any existing filled spots and is completely on the board.
 function isValid(board, tetromino, position) {
+  const shape = Tetromino.getShape(tetromino);
+
+  for (let r = 0; r < shape.length; r++) {
+    for (let c = 0; c < shape[r].length; c++) {
+      // If this part of the shape is "off", don't worry about it.
+      if (shape[r][c] === 0) { continue; }
+
+      // If the horizontal position is off the board, it's not valid.
+      if (position.x + c < 0 || position.x + c > 9) { return false; }
+
+      // If the vertical position is off the board, it's not valid.
+      if (position.y + r < 0 || position.y + r > 19) { return false }
+
+      // If this part of the shape is over a part of the board that's "on", it's not valid.
+      const index = getBoardIndexFromPosition(position);
+      if (board[index] === 1) { return false; }
+    }
+  }
+
   return true;
+}
+
+function getBoardIndexFromPosition(position) {
+  return position.x + (position.y * 10);
 }
