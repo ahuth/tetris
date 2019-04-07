@@ -1,10 +1,15 @@
 import React from 'react';
-import Piece from './Piece';
+import Block from './Block';
+import * as Board from '../utils/board';
 
-export default function Matrix({ current, position }) {
+export default function Matrix({ board, current, position }) {
+  const boardWithTetromino = Board.mapTetrominoToBoard(board, current, position);
+
   return (
     <div style={styles.container}>
-      <Piece position={position} tetromino={current} />
+      {boardWithTetromino.map((fill, i) => {
+        return <Block color={colors[fill]} key={`${i}-${fill}`} />
+      })}
     </div>
   );
 }
@@ -12,8 +17,15 @@ export default function Matrix({ current, position }) {
 const styles = {
   container: {
     borderBottom: '1px solid grey',
+    display: 'grid',
+    gridTemplateColumns: 'repeat(10, 1fr)',
     height: 400,
-    position: 'relative',
     width: 200,
   },
+};
+
+const colors = {
+  0: 'black',
+  1: 'dodgerblue',
+  2: 'limegreen',
 };

@@ -8,6 +8,23 @@ export function create() {
   return fill(new Array(200), 0, 0);
 }
 
+export function mapTetrominoToBoard(board, tetromino, position) {
+  const shape = Tetromino.getShape(tetromino);
+  const mappedBoard = board.slice();
+
+  for (let r = 0; r < shape.length; r++) {
+    for (let c = 0; c < shape[r].length; c++) {
+      // If this part of the shape is "off", don't worry about it.
+      if (shape[r][c] === 0) { continue; }
+
+      const index = getBoardIndexFromPosition(Point.create(position.x + c, position.y + r));
+      mappedBoard[index] = 2;
+    }
+  }
+
+  return mappedBoard;
+}
+
 export function moveDown(board, tetromino, position) {
   const potentialPosition = Point.create(position.x, position.y + 1);
 

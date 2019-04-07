@@ -8,9 +8,6 @@ export default function Block({ color }) {
 
 function getStyling(color) {
   return {
-    display: 'inline-block',
     backgroundColor: color,
-    height: 20,
-    width: 20,
   };
 }
