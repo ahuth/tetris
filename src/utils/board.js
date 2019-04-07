@@ -8,7 +8,7 @@ export function create() {
   return fill(new Array(200), 0, 0);
 }
 
-export function mapTetrominoToBoard(board, tetromino, position, value) {
+export function commitTetrominoToBoard(board, tetromino, position, value) {
   const shape = Tetromino.getShape(tetromino);
   const mappedBoard = board.slice();
 
