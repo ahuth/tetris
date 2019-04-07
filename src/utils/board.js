@@ -8,7 +8,7 @@ export function create() {
   return fill(new Array(200), 0, 0);
 }
 
-export function mapTetrominoToBoard(board, tetromino, position) {
+export function mapTetrominoToBoard(board, tetromino, position, value) {
   const shape = Tetromino.getShape(tetromino);
   const mappedBoard = board.slice();
 
@@ -18,7 +18,7 @@ export function mapTetrominoToBoard(board, tetromino, position) {
       if (shape[r][c] === 0) { continue; }
 
       const index = getBoardIndexFromPosition(Point.create(position.x + c, position.y + r));
-      mappedBoard[index] = 2;
+      mappedBoard[index] = value;
     }
   }
 

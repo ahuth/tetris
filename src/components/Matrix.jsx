@@ -3,7 +3,7 @@ import Block from './Block';
 import * as Board from '../utils/board';
 
 export default function Matrix({ board, current, position }) {
-  const boardWithTetromino = Board.mapTetrominoToBoard(board, current, position);
+  const boardWithTetromino = Board.mapTetrominoToBoard(board, current, position, 2);
 
   return (
     <div style={styles.container}>
