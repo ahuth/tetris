@@ -85,7 +85,7 @@ function isValid(board, tetromino, position) {
       if (position.y + r < 0 || position.y + r > 19) { return false }
 
       // If this part of the shape is over a part of the board that's "on", it's not valid.
-      const index = getBoardIndexFromPosition(position);
+      const index = getBoardIndexFromPosition(Point.create(position.x + c, position.y + r));
       if (board[index] === 1) { return false; }
     }
   }
