@@ -8,6 +8,16 @@ export function create() {
   return fill(new Array(200), 0, 0);
 }
 
+export function moveDown(board, tetromino, position) {
+  const potentialPosition = Point.create(position.x, position.y + 1);
+
+  if (isValid(board, tetromino, potentialPosition)) {
+    return potentialPosition;
+  }
+
+  return position;
+}
+
 // Move a tetromino left, if possible. Either way, return a position.
 export function moveLeft(board, tetromino, position) {
   const potentialPosition = Point.create(position.x - 1, position.y);
