@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "license": "MIT",
   "description": "Classic Tetris game",
+  "homepage": "https://ahuth.github.io/tetris",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ahuth/tetris.git"
@@ -13,13 +14,16 @@
     "react-dom": "^16.8.4"
   },
   "devDependencies": {
+    "gh-pages": "^2.0.1",
     "react-scripts": "^2.1.8"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
