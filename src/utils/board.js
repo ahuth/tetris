@@ -68,7 +68,7 @@ export function rotate(board, tetromino, position, columns) {
   const potentialTetromino = Tetromino.rotate(tetromino);
 
   if (isValid(board, potentialTetromino, position, columns)) {
-    return Tetromino.rotate(tetromino);
+    return potentialTetromino;
   }
 
   return tetromino;
