@@ -18,7 +18,7 @@ export default function App() {
   return (
     <div style={styles.container}>
       <Matrix board={state.board} current={state.current} position={state.position} />
-      <ScoreBoard level={state.level} score={state.score} />
+      <ScoreBoard level={state.level} next={state.next} score={state.score} />
     </div>
   );
 }

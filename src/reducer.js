@@ -3,7 +3,8 @@ import * as Point from './utils/point';
 import * as Randomizer from './utils/randomizer';
 import * as Tetromino from './utils/tetromino';
 
-const [firstShape, randomizer] = Randomizer.next(Randomizer.create());
+const [firstShape, firstRandomizer] = Randomizer.next(Randomizer.create());
+const [secondShape, randomizer] = Randomizer.next(firstRandomizer);
 
 export const StateTypes = {
   Paused: 0,
@@ -24,10 +25,11 @@ export const ActionTypes = {
 };
 
 export const initialState = {
-  board: Board.create(),
+  board: Board.create(20, 10),
   current: Tetromino.create(firstShape),
   interval: 750,
   level: 1,
+  next: Tetromino.create(secondShape),
   position: Point.create(3, 0),
   randomizer: randomizer,
   score: 0,
@@ -38,12 +40,20 @@ export default function reducer(state, action) {
   switch (action) {
     case ActionTypes.Tick:
     case ActionTypes.MoveDown: {
-      const [board, tetromino, position, randomizer] = Board.moveDown(state.board, state.current, state.position, state.randomizer);
+      const [board, current, next, position, randomizer] = Board.moveDown(
+        state.board,
+        state.current,
+        state.next,
+        state.position,
+        state.randomizer,
+        10,
+      );
 
       return {
         ...state,
         board,
-        current: tetromino,
+        current,
+        next,
         position,
         randomizer,
       };
@@ -51,17 +61,17 @@ export default function reducer(state, action) {
     case ActionTypes.MoveLeft:
       return {
         ...state,
-        position: Board.moveLeft(state.board, state.current, state.position),
+        position: Board.moveLeft(state.board, state.current, state.position, 10),
       };
     case ActionTypes.MoveRight:
       return {
         ...state,
-        position: Board.moveRight(state.board, state.current, state.position),
+        position: Board.moveRight(state.board, state.current, state.position, 10),
       };
     case ActionTypes.Rotate:
       return {
         ...state,
-        current: Board.rotate(state.board, state.current, state.position),
+        current: Board.rotate(state.board, state.current, state.position, 10),
       };
     default:
       return state;

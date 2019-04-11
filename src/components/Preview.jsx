@@ -1,9 +1,13 @@
 import React from 'react';
 import Block from './Block';
 import * as Board from '../utils/board';
+import * as Point from '../utils/point';
 
-export default function Matrix({ board, current, position }) {
-  const boardWithTetromino = Board.commitTetrominoToBoard(board, current, position, 2, 10);
+const board = Board.create(5, 5);
+const position = Point.create(1, 1);
+
+export default function Preview({ next }) {
+  const boardWithTetromino = Board.commitTetrominoToBoard(board, next, position, 1, 5);
 
   return (
     <div style={styles.container}>
@@ -16,16 +20,14 @@ export default function Matrix({ board, current, position }) {
 
 const styles = {
   container: {
-    borderBottom: '1px solid grey',
     display: 'grid',
-    gridTemplateColumns: 'repeat(10, 1fr)',
-    height: 400,
-    width: 200,
+    gridTemplateColumns: 'repeat(5, 1fr)',
+    height: 100,
+    width: 100,
   },
 };
 
 const colors = {
   0: 'black',
-  1: 'dodgerblue',
-  2: 'limegreen',
+  1: 'yellow',
 };
