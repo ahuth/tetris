@@ -1,5 +1,5 @@
 import React from 'react';
-import Matrix from './Matrix';
+import MainBoard from './MainBoard';
 import ScoreBoard from './ScoreBoard';
 import useKeyHandler from '../hooks/useKeyHandler';
 import useInterval from '../hooks/useInterval';
@@ -17,7 +17,7 @@ export default function App() {
 
   return (
     <div style={styles.container}>
-      <Matrix board={state.board} columns={10} current={state.current} height={400} position={state.position} width={200} />
+      <MainBoard board={state.board} current={state.current} position={state.position} />
       <ScoreBoard level={state.level} next={state.next} score={state.score} />
     </div>
   );
