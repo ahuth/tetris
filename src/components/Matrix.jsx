@@ -2,11 +2,12 @@ import React from 'react';
 import Block from './Block';
 import * as Board from '../utils/board';
 
-export default function Matrix({ board, current, position }) {
-  const boardWithTetromino = Board.commitTetrominoToBoard(board, current, position, 2, 10);
+export default function Matrix({ board, columns, current, height, position, width }) {
+  const styles = React.useMemo(() => getStyles(columns, height, width), [columns, height, width]);
+  const boardWithTetromino = Board.commitTetrominoToBoard(board, current, position, 2, columns);
 
   return (
-    <div style={styles.container}>
+    <div style={styles}>
       {boardWithTetromino.map((fill, i) => {
         return <Block color={colors[fill]} key={`${i}-${fill}`} />
       })}
@@ -14,15 +15,15 @@ export default function Matrix({ board, current, position }) {
   );
 }
 
-const styles = {
-  container: {
+function getStyles(columns, height, width) {
+  return {
     borderBottom: '1px solid grey',
     display: 'grid',
-    gridTemplateColumns: 'repeat(10, 1fr)',
-    height: 400,
-    width: 200,
-  },
-};
+    gridTemplateColumns: `repeat(${columns}, 1fr)`,
+    height: height,
+    width: width,
+  };
+}
 
 const colors = {
   0: 'black',
