@@ -10,7 +10,6 @@ export default function Preview({ next }) {
   return (
     <Matrix
       board={board}
-      columns={5}
       current={next}
       height={100}
       position={position}

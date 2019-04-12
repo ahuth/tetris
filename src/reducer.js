@@ -46,7 +46,6 @@ export default function reducer(state, action) {
         state.next,
         state.position,
         state.randomizer,
-        10,
       );
 
       return {
@@ -61,17 +60,17 @@ export default function reducer(state, action) {
     case ActionTypes.MoveLeft:
       return {
         ...state,
-        position: Board.moveLeft(state.board, state.current, state.position, 10),
+        position: Board.moveLeft(state.board, state.current, state.position),
       };
     case ActionTypes.MoveRight:
       return {
         ...state,
-        position: Board.moveRight(state.board, state.current, state.position, 10),
+        position: Board.moveRight(state.board, state.current, state.position),
       };
     case ActionTypes.Rotate:
       return {
         ...state,
-        current: Board.rotate(state.board, state.current, state.position, 10),
+        current: Board.rotate(state.board, state.current, state.position),
       };
     default:
       return state;

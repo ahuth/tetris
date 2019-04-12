@@ -2,13 +2,13 @@ import React from 'react';
 import Block from './Block';
 import * as Board from '../utils/board';
 
-export default function Matrix({ board, columns, current, height, position, width }) {
-  const styles = React.useMemo(() => getStyles(columns, height, width), [columns, height, width]);
-  const boardWithTetromino = Board.commitTetrominoToBoard(board, current, position, 2, columns);
+export default function Matrix({ board, current, height, position, width }) {
+  const styles = React.useMemo(() => getStyles(board.columns, height, width), [board.columns, height, width]);
+  const boardWithTetromino = Board.commitTetrominoToBoard(board, current, position, 2);
 
   return (
     <div style={styles}>
-      {boardWithTetromino.map((fill, i) => {
+      {Board.map(boardWithTetromino, (fill, i) => {
         return <Block color={colors[fill]} key={`${i}-${fill}`} />
       })}
     </div>
