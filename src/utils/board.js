@@ -3,8 +3,7 @@ import * as Point from './point';
 import * as Randomizer from './randomizer';
 import * as Tetromino from './tetromino';
 
-// Create a new "board". Represented as a flat array of length 200, which is 10 columns wide by 20
-// rows tall.
+// Create a new board.
 export function create(height, width) {
   const filled = fill(new Array(height * width), 0, 0);
 
@@ -15,6 +14,7 @@ export function create(height, width) {
   };
 }
 
+// Add a tetromino to a board.
 export function commitTetrominoToBoard(board, tetromino, position, value) {
   const shape = Tetromino.getShape(tetromino);
   const mappedBoard = clone(board);
@@ -32,6 +32,8 @@ export function commitTetrominoToBoard(board, tetromino, position, value) {
   return mappedBoard;
 }
 
+// Move a tetromino down, if possible. If not possible, add the tetromino to the board and create a
+// new tetromino.
 export function moveDown(board, current, next, position, randomizer) {
   const potentialPosition = Point.create(position.x, position.y + 1);
 
@@ -107,6 +109,7 @@ function isValid(board, tetromino, position) {
   return true;
 }
 
+// Execute a callback for every location on a board, and return the resulting array.
 export function map(board, callback) {
   return board.fill.map(callback);
 }
