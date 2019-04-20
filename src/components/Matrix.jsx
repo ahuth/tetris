@@ -2,7 +2,13 @@ import React from 'react';
 import Block from './Block';
 import * as Board from '../utils/board';
 
-export default function Matrix({ board, current, height, position, width }) {
+export default function Matrix({
+  board,
+  current,
+  height,
+  position,
+  width,
+}) {
   const styles = React.useMemo(() => getStyles(board.columns, height, width), [board.columns, height, width]);
   const boardWithTetromino = Board.commitTetrominoToBoard(board, current, position, 2);
 
