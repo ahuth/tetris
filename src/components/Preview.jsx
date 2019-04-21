@@ -10,6 +10,7 @@ export default function Preview({ next }) {
   return (
     <Matrix
       board={board}
+      colors={colors}
       current={next}
       height={100}
       position={position}
@@ -17,3 +18,9 @@ export default function Preview({ next }) {
     />
   );
 }
+
+const colors = {
+  0: 'black',
+  1: 'dodgerblue',
+  2: 'yellow',
+};

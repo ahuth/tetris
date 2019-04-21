@@ -5,6 +5,7 @@ export default function MainBoard({ board, current, position }) {
   return (
     <Matrix
       board={board}
+      colors={colors}
       current={current}
       height={400}
       position={position}
@@ -12,3 +13,9 @@ export default function MainBoard({ board, current, position }) {
     />
   );
 }
+
+const colors = {
+  0: 'black',
+  1: 'dodgerblue',
+  2: 'limegreen',
+};

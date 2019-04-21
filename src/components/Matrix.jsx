@@ -4,6 +4,7 @@ import * as Board from '../utils/board';
 
 export default function Matrix({
   board,
+  colors,
   current,
   height,
   position,
@@ -30,9 +31,3 @@ function getStyles(columns, height, width) {
     width: width,
   };
 }
-
-const colors = {
-  0: 'black',
-  1: 'dodgerblue',
-  2: 'limegreen',
-};
