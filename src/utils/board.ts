@@ -23,7 +23,12 @@ export function create(height: number, width: number): Board {
 }
 
 // Add a tetromino to a board.
-export function commitTetrominoToBoard(board: Board, tetromino: Tetromino.Type, position: Point.Type, value: number): Board {
+export function commitTetrominoToBoard(
+  board: Board,
+  tetromino: Tetromino.Type,
+  position: Point.Type,
+  value: number,
+): Board {
   const shape = Tetromino.getShape(tetromino);
   const mappedBoard = clone(board);
 
@@ -44,7 +49,13 @@ type MoveDownResult = [Board, Tetromino.Type, Tetromino.Type, Point.Type, Random
 
 // Move a tetromino down, if possible. If not possible, add the tetromino to the board and create a
 // new tetromino.
-export function moveDown(board: Board, current: Tetromino.Type, next: Tetromino.Type, position: Point.Type, randomizer: Randomizer.Type): MoveDownResult {
+export function moveDown(
+  board: Board,
+  current: Tetromino.Type,
+  next: Tetromino.Type,
+  position: Point.Type,
+  randomizer: Randomizer.Type,
+): MoveDownResult {
   const potentialPosition = Point.create(position.x, position.y + 1);
 
   if (isValid(board, current, potentialPosition)) {
