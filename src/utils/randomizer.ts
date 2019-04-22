@@ -7,7 +7,8 @@ type Randomizer = ShapeType[];
 
 /**
  * Create a new randomizer object, which s passed in to the other methods in this module to get
- * random numbers. @see http://tetris.wikia.com/wiki/Random_Generator.
+ * random numbers.
+ * @see http://tetris.wikia.com/wiki/Random_Generator.
  */
 export function create(): Randomizer {
   return shuffle(Object.keys(ShapeType) as ShapeType[]);
