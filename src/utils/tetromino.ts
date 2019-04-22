@@ -22,7 +22,9 @@ interface Tetromino {
   orientation: ShapeOrientation;
 }
 
-// Create a new Tetromino.
+/**
+ * Create a new Tetromino.
+ */
 export function create(type: ShapeType): Tetromino {
   return {
     type,
@@ -30,12 +32,16 @@ export function create(type: ShapeType): Tetromino {
   };
 }
 
-// Get the current blocks for a piece and orientation.
+/**
+ * Get the current blocks for a piece and orientation.
+ */
 export function getShape(tetromino: Tetromino) {
   return shapes[tetromino.type][tetromino.orientation];
 }
 
-// Rotate a Tetromino clockwise.
+/**
+ * Rotate a Tetromino clockwise.
+ */
 export function rotate(tetromino: Tetromino): Tetromino {
   return {
     ...tetromino,
