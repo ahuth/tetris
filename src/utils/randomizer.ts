@@ -1,7 +1,9 @@
 import { shuffle } from 'lodash';
 import { ShapeType } from './tetromino';
 
-export type Randomizer = ShapeType[];
+export type Type = Randomizer;
+
+type Randomizer = ShapeType[];
 
 // Create a new randomizer object, which s passed in to the other methods in this module to get
 // random numbers. See http://tetris.wikia.com/wiki/Random_Generator.

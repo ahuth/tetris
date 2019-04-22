@@ -1,3 +1,5 @@
+export type Type = Tetromino;
+
 export enum ShapeType {
   L = 'L',
   I = 'I',
@@ -15,7 +17,7 @@ export enum ShapeOrientation {
   Left = 3,
 }
 
-export interface Tetromino {
+interface Tetromino {
   type: ShapeType;
   orientation: ShapeOrientation;
 }

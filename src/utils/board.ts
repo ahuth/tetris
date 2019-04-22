@@ -3,7 +3,9 @@ import * as Point from './point';
 import * as Randomizer from './randomizer';
 import * as Tetromino from './tetromino';
 
-export interface Board {
+export type Type = Board;
+
+interface Board {
   columns: number;
   fill: number[];
   length: number;
@@ -21,7 +23,7 @@ export function create(height: number, width: number): Board {
 }
 
 // Add a tetromino to a board.
-export function commitTetrominoToBoard(board: Board, tetromino: Tetromino.Tetromino, position: Point.Point, value: number): Board {
+export function commitTetrominoToBoard(board: Board, tetromino: Tetromino.Type, position: Point.Type, value: number): Board {
   const shape = Tetromino.getShape(tetromino);
   const mappedBoard = clone(board);
 
@@ -38,11 +40,11 @@ export function commitTetrominoToBoard(board: Board, tetromino: Tetromino.Tetrom
   return mappedBoard;
 }
 
-type MoveDownResult = [Board, Tetromino.Tetromino, Tetromino.Tetromino, Point.Point, Randomizer.Randomizer];
+type MoveDownResult = [Board, Tetromino.Type, Tetromino.Type, Point.Type, Randomizer.Type];
 
 // Move a tetromino down, if possible. If not possible, add the tetromino to the board and create a
 // new tetromino.
-export function moveDown(board: Board, current: Tetromino.Tetromino, next: Tetromino.Tetromino, position: Point.Point, randomizer: Randomizer.Randomizer): MoveDownResult {
+export function moveDown(board: Board, current: Tetromino.Type, next: Tetromino.Type, position: Point.Type, randomizer: Randomizer.Type): MoveDownResult {
   const potentialPosition = Point.create(position.x, position.y + 1);
 
   if (isValid(board, current, potentialPosition)) {
@@ -58,7 +60,7 @@ export function moveDown(board: Board, current: Tetromino.Tetromino, next: Tetro
 }
 
 // Move a tetromino left, if possible. Either way, return a position.
-export function moveLeft(board: Board, tetromino: Tetromino.Tetromino, position: Point.Point) {
+export function moveLeft(board: Board, tetromino: Tetromino.Type, position: Point.Type) {
   const potentialPosition = Point.create(position.x - 1, position.y);
 
   if (isValid(board, tetromino, potentialPosition)) {
@@ -69,7 +71,7 @@ export function moveLeft(board: Board, tetromino: Tetromino.Tetromino, position:
 }
 
 // Move a tetromino right, if possible. Either way, return a position.
-export function moveRight(board: Board, tetromino: Tetromino.Tetromino, position: Point.Point) {
+export function moveRight(board: Board, tetromino: Tetromino.Type, position: Point.Type) {
   const potentialPosition = Point.create(position.x + 1, position.y);
 
   if (isValid(board, tetromino, potentialPosition)) {
@@ -80,7 +82,7 @@ export function moveRight(board: Board, tetromino: Tetromino.Tetromino, position
 }
 
 // Rotate a tetromino, if possible. Either way, return a tetromino.
-export function rotate(board: Board, tetromino: Tetromino.Tetromino, position: Point.Point) {
+export function rotate(board: Board, tetromino: Tetromino.Type, position: Point.Type) {
   const potentialTetromino = Tetromino.rotate(tetromino);
 
   if (isValid(board, potentialTetromino, position)) {
@@ -92,7 +94,7 @@ export function rotate(board: Board, tetromino: Tetromino.Tetromino, position: P
 
 // Determine if a tetromino at a certain position on the board is "valid". In other words, doesn't
 // overlap with any existing filled spots and is completely on the board.
-function isValid(board: Board, tetromino: Tetromino.Tetromino, position: Point.Point) {
+function isValid(board: Board, tetromino: Tetromino.Type, position: Point.Type) {
   const shape = Tetromino.getShape(tetromino);
   const maxColIndex = board.columns - 1;
   const maxRowIndex = (board.length / board.columns) - 1;
@@ -122,7 +124,7 @@ export function map(board: Board, callback: (x: number) => unknown) {
   return board.fill.map(callback);
 }
 
-function getBoardIndexFromPosition(board: Board, position: Point.Point) {
+function getBoardIndexFromPosition(board: Board, position: Point.Type) {
   return position.x + (position.y * board.columns);
 }
 
