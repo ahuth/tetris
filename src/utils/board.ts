@@ -45,8 +45,6 @@ export function commitTetrominoToBoard(
   return mappedBoard;
 }
 
-type MoveDownResult = [Board, Tetromino.Type, Tetromino.Type, Point.Type, Randomizer.Type];
-
 // Move a tetromino down, if possible. If not possible, add the tetromino to the board and create a
 // new tetromino.
 export function moveDown(
@@ -55,7 +53,7 @@ export function moveDown(
   next: Tetromino.Type,
   position: Point.Type,
   randomizer: Randomizer.Type,
-): MoveDownResult {
+): [Board, Tetromino.Type, Tetromino.Type, Point.Type, Randomizer.Type] {
   const potentialPosition = Point.create(position.x, position.y + 1);
 
   if (isValid(board, current, potentialPosition)) {
