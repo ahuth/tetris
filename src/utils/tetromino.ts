@@ -1,22 +1,27 @@
-export const ShapeType = {
-  L: 'L',
-  I: 'I',
-  T: 'T',
-  S: 'S',
-  Z: 'Z',
-  O: 'O',
-  J: 'J',
+export enum ShapeType {
+  L = 'L',
+  I = 'I',
+  T = 'T',
+  S = 'S',
+  Z = 'Z',
+  O = 'O',
+  J = 'J',
 }
 
-export const ShapeOrientation = {
-  Up: 0,
-  Right: 1,
-  Down: 2,
-  Left: 3,
+export enum ShapeOrientation {
+  Up = 0,
+  Right = 1,
+  Down = 2,
+  Left = 3,
+}
+
+export interface Tetromino {
+  type: ShapeType;
+  orientation: ShapeOrientation;
 }
 
 // Create a new Tetromino.
-export function create(type) {
+export function create(type: ShapeType): Tetromino {
   return {
     type,
     orientation: ShapeOrientation.Up,
@@ -24,19 +29,19 @@ export function create(type) {
 }
 
 // Get the current blocks for a piece and orientation.
-export function getShape(tetromino) {
+export function getShape(tetromino: Tetromino) {
   return shapes[tetromino.type][tetromino.orientation];
 }
 
 // Rotate a Tetromino clockwise.
-export function rotate(tetromino) {
+export function rotate(tetromino: Tetromino): Tetromino {
   return {
     ...tetromino,
     orientation: nextOrientation(tetromino.orientation),
   };
 }
 
-function nextOrientation(n) {
+function nextOrientation(n: number) {
   return (n + 1) % 4;
 }
 
