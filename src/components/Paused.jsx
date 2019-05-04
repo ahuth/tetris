@@ -21,7 +21,7 @@ const styles = {
     display: 'flex',
   },
   text: {
-    backgroundColor: 'white',
+    backgroundColor: 'whitesmoke',
     color: 'black',
     display: 'block',
     position: 'absolute',
