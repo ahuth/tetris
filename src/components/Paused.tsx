@@ -1,9 +1,14 @@
 import React from 'react';
 import MainBoard from './MainBoard';
 import ScoreBoard from './ScoreBoard';
-import { ActionTypes } from '../reducer';
+import { ActionTypes, State } from '../reducer';
 
-export default function Paused({ dispatch, state }) {
+type Props = {
+  dispatch: React.Dispatch<ActionTypes>,
+  state: State,
+}
+
+export default function Paused({ dispatch, state }: Props) {
   return (
     <div style={styles.container}>
       <MainBoard board={state.board} current={state.current} position={state.position}>
@@ -24,8 +29,8 @@ const styles = {
     backgroundColor: 'whitesmoke',
     color: 'black',
     display: 'block',
-    position: 'absolute',
-    textAlign: 'center',
+    position: 'absolute' as 'absolute',
+    textAlign: 'center' as 'center',
     top: '50%',
     width: '100%',
   },

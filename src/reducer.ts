@@ -6,22 +6,22 @@ import * as Tetromino from './utils/tetromino';
 const [firstShape, firstRandomizer] = Randomizer.next(Randomizer.create());
 const [secondShape, randomizer] = Randomizer.next(firstRandomizer);
 
-export const StateTypes = {
-  Paused: 0,
-  Playing: 1,
-  Won: 2,
-  Lost: 3,
+export enum StateTypes {
+  Paused,
+  Playing,
+  Won,
+  Lost,
 };
 
-export const ActionTypes = {
-  MoveDown: 'down',
-  MoveLeft: 'left',
-  MoveRight: 'right',
-  Reset: 'reset',
-  Rotate: 'rotate',
-  Start: 'start',
-  Stop: 'stop',
-  Tick: 'tick',
+export enum ActionTypes {
+  MoveDown = 'down',
+  MoveLeft = 'left',
+  MoveRight = 'right',
+  Reset = 'reset',
+  Rotate = 'rotate',
+  Start = 'start',
+  Stop = 'stop',
+  Tick = 'tick',
 };
 
 export const initialState = {
@@ -36,7 +36,9 @@ export const initialState = {
   state: StateTypes.Paused,
 }
 
-export default function reducer(state, action) {
+export type State = typeof initialState;
+
+export default function reducer(state: State, action: ActionTypes) {
   switch (action) {
     case ActionTypes.Tick:
     case ActionTypes.MoveDown: {

@@ -3,9 +3,14 @@ import MainBoard from './MainBoard';
 import ScoreBoard from './ScoreBoard';
 import useKeyHandler from '../hooks/useKeyHandler';
 import useInterval from '../hooks/useInterval';
-import { ActionTypes } from '../reducer';
+import { ActionTypes, State } from '../reducer';
 
-export default function Playing({ dispatch, state }) {
+type Props = {
+  dispatch: React.Dispatch<ActionTypes>,
+  state: State,
+}
+
+export default function Playing({ dispatch, state }: Props) {
   useKeyHandler('ArrowUp', () => dispatch(ActionTypes.Rotate));
   useKeyHandler('ArrowDown', () => dispatch(ActionTypes.MoveDown));
   useKeyHandler('ArrowLeft', () => dispatch(ActionTypes.MoveLeft));
