@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useReducer } from 'react';
 import Paused from './Paused';
 import Playing from './Playing';
 import reducer, { initialState, StateTypes } from '../reducer';
 
 export default function App() {
-  const [state, dispatch] = React.useReducer(reducer, initialState);
+  const [state, dispatch] = useReducer(reducer, initialState);
 
   switch (state.state) {
     case StateTypes.Paused:

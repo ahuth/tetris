@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 
 type Props = {
   color: string,
 }
 
 export default function Block({ color }: Props) {
-  const styling = React.useMemo(() => getStyling(color), [color]);
+  const styling = useMemo(() => getStyling(color), [color]);
 
   return <div style={styling} />;
 }

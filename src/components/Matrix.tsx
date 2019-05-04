@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import Block from './Block';
 import * as Board from '../utils/board';
 import { Type as Point } from '../utils/point';
@@ -21,7 +21,7 @@ export default function Matrix({
   position,
   width,
 }: Props) {
-  const styles = React.useMemo(() => getStyles(board.columns, height, width), [board.columns, height, width]);
+  const styles = useMemo(() => getStyles(board.columns, height, width), [board.columns, height, width]);
   const boardWithTetromino = Board.commitTetrominoToBoard(board, current, position, 2);
 
   return (

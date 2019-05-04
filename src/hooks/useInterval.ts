@@ -1,13 +1,13 @@
-import React from 'react';
+import { useEffect, useRef } from 'react';
 
 export default function useInterval(delay: number, callback: () => void) {
-  const savedCallback = React.useRef<Function>();
+  const savedCallback = useRef<Function>();
 
-  React.useEffect(() => {
+  useEffect(() => {
     savedCallback.current = callback;
   }, [callback]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     function tick() {
       savedCallback.current && savedCallback.current();
     }
