@@ -15,7 +15,9 @@ export default function Playing({ dispatch, state }) {
   return (
     <div style={styles.container}>
       <MainBoard board={state.board} current={state.current} position={state.position} />
-      <ScoreBoard level={state.level} next={state.next} score={state.score} />
+      <ScoreBoard level={state.level} next={state.next} score={state.score}>
+        <button onClick={() => dispatch(ActionTypes.Stop)}>Pause</button>
+      </ScoreBoard>
     </div>
   );
 }
