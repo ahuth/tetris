@@ -2,11 +2,16 @@ import React from 'react';
 import Matrix from './Matrix';
 import * as Board from '../utils/board';
 import * as Point from '../utils/point';
+import { Type as Tetromino } from '../utils/tetromino';
 
 const board = Board.create(5, 5);
 const position = Point.create(1, 1);
 
-export default function Preview({ next }) {
+type Props = {
+  next: Tetromino,
+}
+
+export default function Preview({ next }: Props) {
   return (
     <Matrix
       board={board}

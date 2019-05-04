@@ -36,7 +36,9 @@ export const initialState = {
   state: StateTypes.Paused,
 }
 
-export default function reducer(state: typeof initialState, action: ActionTypes) {
+export type State = typeof initialState;
+
+export default function reducer(state: State, action: ActionTypes) {
   switch (action) {
     case ActionTypes.Tick:
     case ActionTypes.MoveDown: {

@@ -1,7 +1,17 @@
 import React from 'react';
 import Matrix from './Matrix';
+import { Type as Board } from '../utils/board';
+import { Type as Point } from '../utils/point';
+import { Type as Tetromino } from '../utils/tetromino';
 
-export default function MainBoard({ board, children, current, position }) {
+type Props = {
+  board: Board,
+  children?: React.ReactNode,
+  current: Tetromino,
+  position: Point,
+}
+
+export default function MainBoard({ board, children, current, position }: Props) {
   return (
     <div style={styles.container}>
       <Matrix
@@ -25,6 +35,6 @@ const colors = {
 
 const styles = {
   container: {
-    position: 'relative',
+    position: 'relative' as 'relative',
   },
 };

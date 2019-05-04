@@ -145,7 +145,7 @@ function isValid(board: Board, tetromino: Tetromino.Type, position: Point.Type) 
 /**
  * Execute a callback for every location on a board, and return the resulting array.
  */
-export function map(board: Board, callback: (x: number) => unknown) {
+export function map(board: Board, callback: (x: number, index: number) => unknown) {
   return board.fill.map(callback);
 }
 
