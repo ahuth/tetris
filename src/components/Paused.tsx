@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import MainBoard from './MainBoard';
 import ScoreBoard from './ScoreBoard';
 import useKeyHandler from '../hooks/useKeyHandler';
@@ -10,7 +10,8 @@ type Props = {
 }
 
 export default function Paused({ dispatch, state }: Props) {
-  useKeyHandler(' ', () => dispatch(ActionTypes.Start));
+  const dispatchStart = useCallback(() => dispatch(ActionTypes.Start), [dispatch]);
+  useKeyHandler(' ', dispatchStart);
 
   return (
     <div style={styles.container}>
@@ -18,7 +19,7 @@ export default function Paused({ dispatch, state }: Props) {
         <span style={styles.text}>Paused</span>
       </MainBoard>
       <ScoreBoard level={state.level} next={state.next} score={state.score}>
-        <button onClick={() => dispatch(ActionTypes.Start)}>Start</button>
+        <button onClick={dispatchStart}>Start</button>
       </ScoreBoard>
     </div>
   );

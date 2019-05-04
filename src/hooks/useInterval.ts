@@ -14,5 +14,5 @@ export default function useInterval(delay: number, callback: () => void) {
 
     let id = setInterval(tick, delay);
     return () => clearInterval(id);
-  }, [delay]);
+  }, [delay, callback]);
 }

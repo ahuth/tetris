@@ -11,5 +11,5 @@ export default function useKeyHandler(key: string, handler: (event: KeyboardEven
     document.addEventListener('keydown', handleKeyDown);
 
     return () => document.removeEventListener('keydown', handleKeyDown);
-  }, [key]);
+  }, [key, handler]);
 }

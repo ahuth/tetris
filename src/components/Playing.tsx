@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import MainBoard from './MainBoard';
 import ScoreBoard from './ScoreBoard';
 import useKeyHandler from '../hooks/useKeyHandler';
@@ -11,18 +11,25 @@ type Props = {
 }
 
 export default function Playing({ dispatch, state }: Props) {
-  useKeyHandler('ArrowUp', () => dispatch(ActionTypes.Rotate));
-  useKeyHandler('ArrowDown', () => dispatch(ActionTypes.MoveDown));
-  useKeyHandler('ArrowLeft', () => dispatch(ActionTypes.MoveLeft));
-  useKeyHandler('ArrowRight', () => dispatch(ActionTypes.MoveRight));
-  useKeyHandler(' ', () => dispatch(ActionTypes.Stop));
-  useInterval(state.interval, () => dispatch(ActionTypes.Tick));
+  const dispatchRotate = useCallback(() => dispatch(ActionTypes.Rotate), [dispatch]);
+  const dispatchDown = useCallback(() => dispatch(ActionTypes.MoveDown), [dispatch]);
+  const dispatchLeft = useCallback(() => dispatch(ActionTypes.MoveLeft), [dispatch]);
+  const dispatchRight = useCallback(() => dispatch(ActionTypes.MoveRight), [dispatch]);
+  const dispatchStop = useCallback(() => dispatch(ActionTypes.Stop), [dispatch]);
+  const dispatchTick = useCallback(() => dispatch(ActionTypes.Tick), [dispatch]);
+
+  useKeyHandler('ArrowUp', dispatchRotate);
+  useKeyHandler('ArrowDown', dispatchDown);
+  useKeyHandler('ArrowLeft', dispatchLeft);
+  useKeyHandler('ArrowRight', dispatchRight);
+  useKeyHandler(' ', dispatchStop);
+  useInterval(state.interval, dispatchTick);
 
   return (
     <div style={styles.container}>
       <MainBoard board={state.board} current={state.current} position={state.position} />
       <ScoreBoard level={state.level} next={state.next} score={state.score}>
-        <button onClick={() => dispatch(ActionTypes.Stop)}>Pause</button>
+        <button onClick={dispatchStop}>Pause</button>
       </ScoreBoard>
     </div>
   );
