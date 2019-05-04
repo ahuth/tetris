@@ -15,6 +15,7 @@ export default function Playing({ dispatch, state }: Props) {
   useKeyHandler('ArrowDown', () => dispatch(ActionTypes.MoveDown));
   useKeyHandler('ArrowLeft', () => dispatch(ActionTypes.MoveLeft));
   useKeyHandler('ArrowRight', () => dispatch(ActionTypes.MoveRight));
+  useKeyHandler(' ', () => dispatch(ActionTypes.Stop));
   useInterval(state.interval, () => dispatch(ActionTypes.Tick));
 
   return (

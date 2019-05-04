@@ -1,6 +1,7 @@
 import React from 'react';
 import MainBoard from './MainBoard';
 import ScoreBoard from './ScoreBoard';
+import useKeyHandler from '../hooks/useKeyHandler';
 import { ActionTypes, State } from '../reducer';
 
 type Props = {
@@ -9,6 +10,8 @@ type Props = {
 }
 
 export default function Paused({ dispatch, state }: Props) {
+  useKeyHandler(' ', () => dispatch(ActionTypes.Start));
+
   return (
     <div style={styles.container}>
       <MainBoard board={state.board} current={state.current} position={state.position}>
