@@ -72,6 +72,16 @@ export default function reducer(state, action) {
         ...state,
         current: Board.rotate(state.board, state.current, state.position),
       };
+    case ActionTypes.Start:
+      return {
+        ...state,
+        state: StateTypes.Playing,
+      };
+    case ActionTypes.Stop:
+      return {
+        ...state,
+        state: StateTypes.Paused,
+      };
     default:
       return state;
   }
