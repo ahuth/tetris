@@ -15,7 +15,7 @@ export function create(): Randomizer {
 }
 
 /**
- * Retrieve the next number. Returns an array with value and the next randomizer.
+ * Retrieve the next shape. Returns an array with a value and the next randomizer.
  *
  * Example:
  *
