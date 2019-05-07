@@ -2,6 +2,7 @@ import { fill } from 'lodash';
 import * as Point from './point';
 import * as Randomizer from './randomizer';
 import * as Tetromino from './tetromino';
+import { StateTypes } from '../reducer';
 
 export type Type = Board;
 
@@ -59,11 +60,16 @@ export function moveDown(
   next: Tetromino.Type,
   position: Point.Type,
   randomizer: Randomizer.Type,
-): [Board, Tetromino.Type, Tetromino.Type, Point.Type, Randomizer.Type] {
+  state: StateTypes,
+): [Board, Tetromino.Type, Tetromino.Type, Point.Type, Randomizer.Type, StateTypes] {
   const potentialPosition = Point.create(position.x, position.y + 1);
 
   if (isValid(board, current, potentialPosition)) {
-    return [board, current, next, potentialPosition, randomizer];
+    return [board, current, next, potentialPosition, randomizer, state];
+  }
+
+  if (isAtTop(position)) {
+    return [board, current, next, position, randomizer, StateTypes.Lost];
   }
 
   const nextBoard = commitTetrominoToBoard(board, current, position, 1);
@@ -71,7 +77,7 @@ export function moveDown(
   const nextNext = Tetromino.create(nextShape);
   const nextPosition = Point.create(3, 0);
 
-  return [nextBoard, next, nextNext, nextPosition, nextRandomizer];
+  return [nextBoard, next, nextNext, nextPosition, nextRandomizer, state];
 }
 
 /**
@@ -147,6 +153,13 @@ function isValid(board: Board, tetromino: Tetromino.Type, position: Point.Type) 
  */
 export function map(board: Board, callback: (x: number, index: number) => unknown) {
   return board.fill.map(callback);
+}
+
+/**
+ * Determine if a position is at the "top" of the screen.
+ */
+export function isAtTop(position: Point.Type) {
+  return position.y === 0;
 }
 
 function getBoardIndexFromPosition(board: Board, position: Point.Type) {

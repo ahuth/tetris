@@ -46,12 +46,13 @@ export default function reducer(state: State, action: ActionTypes) {
   switch (action) {
     case ActionTypes.Tick:
     case ActionTypes.MoveDown: {
-      const [board, current, next, position, randomizer] = Board.moveDown(
+      const [board, current, next, position, randomizer, nextState] = Board.moveDown(
         state.board,
         state.current,
         state.next,
         state.position,
         state.randomizer,
+        state.state,
       );
 
       return {
@@ -60,6 +61,7 @@ export default function reducer(state: State, action: ActionTypes) {
         current,
         next,
         position,
+        state: nextState,
         randomizer,
       };
      }
