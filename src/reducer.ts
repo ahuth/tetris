@@ -3,9 +3,6 @@ import * as Point from './utils/point';
 import * as Randomizer from './utils/randomizer';
 import * as Tetromino from './utils/tetromino';
 
-const [firstShape, firstRandomizer] = Randomizer.next(Randomizer.create());
-const [secondShape, randomizer] = Randomizer.next(firstRandomizer);
-
 export enum StateTypes {
   Paused,
   Playing,
@@ -24,17 +21,24 @@ export enum ActionTypes {
   Tick = 'tick',
 };
 
-export const initialState = {
-  board: Board.create(20, 10),
-  current: Tetromino.create(firstShape),
-  interval: 750,
-  level: 1,
-  next: Tetromino.create(secondShape),
-  position: Point.create(3, 0),
-  randomizer: randomizer,
-  score: 0,
-  state: StateTypes.Paused,
+function createInitialState() {
+  const [firstShape, firstRandomizer] = Randomizer.next(Randomizer.create());
+  const [secondShape, randomizer] = Randomizer.next(firstRandomizer);
+
+  return {
+    board: Board.create(20, 10),
+    current: Tetromino.create(firstShape),
+    interval: 750,
+    level: 1,
+    next: Tetromino.create(secondShape),
+    position: Point.create(3, 0),
+    randomizer: randomizer,
+    score: 0,
+    state: StateTypes.Paused,
+  };
 }
+
+export const initialState = createInitialState();
 
 export type State = typeof initialState;
 
