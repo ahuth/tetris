@@ -73,6 +73,8 @@ export default function reducer(state: State, action: ActionTypes) {
         ...state,
         position: Board.moveRight(state.board, state.current, state.position),
       };
+    case ActionTypes.Reset:
+      return createInitialState();
     case ActionTypes.Rotate:
       return {
         ...state,

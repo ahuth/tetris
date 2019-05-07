@@ -11,6 +11,7 @@ type Props = {
 
 export default function Paused({ dispatch, state }: Props) {
   const dispatchStart = useCallback(() => dispatch(ActionTypes.Start), [dispatch]);
+  const dispatchReset = useCallback(() => dispatch(ActionTypes.Reset), [dispatch]);
   useKeyHandler(' ', dispatchStart);
 
   return (
@@ -20,6 +21,7 @@ export default function Paused({ dispatch, state }: Props) {
       </MainBoard>
       <ScoreBoard level={state.level} next={state.next} score={state.score}>
         <button onClick={dispatchStart}>Start</button>
+        <button onClick={dispatchReset}>Reset</button>
       </ScoreBoard>
     </div>
   );
