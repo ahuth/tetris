@@ -4,7 +4,6 @@ import * as Randomizer from './utils/randomizer';
 import * as Tetromino from './utils/tetromino';
 
 export enum StateTypes {
-  Paused,
   Playing,
   Won,
   Lost,
@@ -34,7 +33,7 @@ function createInitialState() {
     position: Point.create(3, 0),
     randomizer: randomizer,
     score: 0,
-    state: StateTypes.Paused,
+    state: StateTypes.Playing,
   };
 }
 
@@ -86,11 +85,6 @@ export default function reducer(state: State, action: ActionTypes) {
       return {
         ...state,
         state: StateTypes.Playing,
-      };
-    case ActionTypes.Stop:
-      return {
-        ...state,
-        state: StateTypes.Paused,
       };
     default:
       return state;

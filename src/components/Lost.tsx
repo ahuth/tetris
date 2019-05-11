@@ -1,6 +1,7 @@
 import React, { useCallback } from 'react';
 import MainBoard from './MainBoard';
 import ScoreBoard from './ScoreBoard';
+import useKeyHandler from '../hooks/useKeyHandler';
 import { ActionTypes, State } from '../reducer';
 
 type Props = {
@@ -10,6 +11,7 @@ type Props = {
 
 export default function Lost({ dispatch, state }: Props) {
   const dispatchReset = useCallback(() => dispatch(ActionTypes.Reset), [dispatch]);
+  useKeyHandler(' ', dispatchReset);
 
   return (
     <div style={styles.container}>
