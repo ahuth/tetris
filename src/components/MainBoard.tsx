@@ -35,6 +35,6 @@ const colors = {
 
 const styles = {
   container: {
-    position: 'relative' as 'relative',
+    position: 'relative' as const,
   },
 };
