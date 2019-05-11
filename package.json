@@ -15,11 +15,11 @@
     "react-dom": "^16.8.6"
   },
   "devDependencies": {
-    "@types/lodash": "^4.14.125",
+    "@types/lodash": "^4.14.126",
     "@types/react": "^16.8.17",
     "@types/react-dom": "^16.8.4",
-    "@typescript-eslint/eslint-plugin": "^1.7.0",
-    "@typescript-eslint/parser": "^1.7.0",
+    "@typescript-eslint/eslint-plugin": "^1.8.0",
+    "@typescript-eslint/parser": "^1.8.0",
     "eslint-plugin-react-hooks": "^1.6.0",
     "gh-pages": "^2.0.1",
     "react-scripts": "^2.1.8",
