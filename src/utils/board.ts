@@ -72,7 +72,9 @@ export function moveDown(
     return [board, current, next, position, randomizer, StateTypes.Lost];
   }
 
-  const nextBoard = commitTetrominoToBoard(board, current, position, 1);
+  let nextBoard = commitTetrominoToBoard(board, current, position, 1);
+  nextBoard = removeCompletedRows(nextBoard);
+
   const [nextShape, nextRandomizer] = Randomizer.next(randomizer);
   const nextNext = Tetromino.create(nextShape);
   const nextPosition = Point.create(3, 0);
@@ -179,4 +181,43 @@ function getAtIndex(board: Board, index: number) {
 
 function setAtIndex(board: Board, index: number, value: number): void {
   board.fill[index] = value;
+}
+
+function removeCompletedRows(board: Board): Board {
+  let nextBoard = board;
+  let isRemoving = false;
+  const numRows = board.length / board.columns;
+
+  for (let r = 0; r < numRows; r++) {
+    for (let c = 0; c < board.columns; c++) {
+      const position = Point.create(c, r);
+      const index = getBoardIndexFromPosition(board, position);
+
+      // If any part of this row is 0, stop and move on to the next row.
+      if (getAtIndex(board, index) === 0) {
+        c = Number.MAX_SAFE_INTEGER;
+        continue;
+      }
+
+      // If this is the last column in the row, the row must be completed.
+      if (c === board.columns - 1) {
+        // If we haven't created a new board, yet, do so.
+        if (!isRemoving) {
+          isRemoving = true;
+          nextBoard = clone(nextBoard);
+        }
+
+        // Remove the row from the board.
+        const beginningPosition = Point.create(0, r);
+        const beginningIndex = getBoardIndexFromPosition(board, beginningPosition);
+        nextBoard.fill.splice(beginningIndex, board.columns);
+
+        // Add an empty row to the top.
+        const emptyRow = fill(new Array(board.columns), 0, 0);
+        nextBoard.fill.unshift(...emptyRow);
+      }
+    }
+  }
+
+  return nextBoard;
 }
