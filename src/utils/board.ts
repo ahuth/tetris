@@ -195,8 +195,7 @@ function removeCompletedRows(board: Board): Board {
 
       // If any part of this row is 0, stop and move on to the next row.
       if (getAtIndex(board, index) === 0) {
-        c = Number.MAX_SAFE_INTEGER;
-        continue;
+        break;
       }
 
       // If this is the last column in the row, the row must be completed.
