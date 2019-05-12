@@ -57,21 +57,21 @@ export function commitTetrominoToBoard(
 export function moveDown(
   board: Board,
   current: Tetromino.Type,
+  level: number,
   next: Tetromino.Type,
   position: Point.Type,
   randomizer: Randomizer.Type,
-  state: StateTypes,
   score: number,
-  level: number,
-): [Board, Tetromino.Type, Tetromino.Type, Point.Type, Randomizer.Type, StateTypes, number, number] {
+  state: StateTypes,
+): [Board, Tetromino.Type, number, Tetromino.Type, Point.Type, Randomizer.Type, number, StateTypes] {
   const potentialPosition = Point.create(position.x, position.y + 1);
 
   if (isValid(board, current, potentialPosition)) {
-    return [board, current, next, potentialPosition, randomizer, state, score, level];
+    return [board, current, level, next, potentialPosition, randomizer, score, state];
   }
 
   if (isAtTop(position)) {
-    return [board, current, next, position, randomizer, StateTypes.Lost, score, level];
+    return [board, current, level, next, position, randomizer, score, StateTypes.Lost];
   }
 
   let linesRemoved;
@@ -83,7 +83,7 @@ export function moveDown(
   const nextPosition = Point.create(3, 0);
   const nextScore = score + scoreRows(linesRemoved, level);
 
-  return [nextBoard, next, nextNext, nextPosition, nextRandomizer, state, nextScore, level];
+  return [nextBoard, next, level, nextNext, nextPosition, nextRandomizer, nextScore, state];
 }
 
 /**
