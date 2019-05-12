@@ -61,25 +61,29 @@ export function moveDown(
   position: Point.Type,
   randomizer: Randomizer.Type,
   state: StateTypes,
-): [Board, Tetromino.Type, Tetromino.Type, Point.Type, Randomizer.Type, StateTypes] {
+  score: number,
+  level: number,
+): [Board, Tetromino.Type, Tetromino.Type, Point.Type, Randomizer.Type, StateTypes, number, number] {
   const potentialPosition = Point.create(position.x, position.y + 1);
 
   if (isValid(board, current, potentialPosition)) {
-    return [board, current, next, potentialPosition, randomizer, state];
+    return [board, current, next, potentialPosition, randomizer, state, score, level];
   }
 
   if (isAtTop(position)) {
-    return [board, current, next, position, randomizer, StateTypes.Lost];
+    return [board, current, next, position, randomizer, StateTypes.Lost, score, level];
   }
 
+  let linesRemoved;
   let nextBoard = commitTetrominoToBoard(board, current, position, 1);
-  nextBoard = removeCompletedRows(nextBoard);
+  [nextBoard, linesRemoved] = removeCompletedRows(nextBoard);
 
   const [nextShape, nextRandomizer] = Randomizer.next(randomizer);
   const nextNext = Tetromino.create(nextShape);
   const nextPosition = Point.create(3, 0);
+  const nextScore = score + scoreRows(linesRemoved, level);
 
-  return [nextBoard, next, nextNext, nextPosition, nextRandomizer, state];
+  return [nextBoard, next, nextNext, nextPosition, nextRandomizer, state, nextScore, level];
 }
 
 /**
@@ -183,7 +187,8 @@ function setAtIndex(board: Board, index: number, value: number): void {
   board.fill[index] = value;
 }
 
-function removeCompletedRows(board: Board): Board {
+function removeCompletedRows(board: Board): [Board, number] {
+  let linesRemoved = 0;
   let nextBoard = board;
   let isRemoving = false;
   const numRows = board.length / board.columns;
@@ -200,6 +205,8 @@ function removeCompletedRows(board: Board): Board {
 
       // If this is the last column in the row, the row must be completed.
       if (c === board.columns - 1) {
+        linesRemoved = linesRemoved + 1;
+
         // If we haven't created a new board, yet, do so.
         if (!isRemoving) {
           isRemoving = true;
@@ -218,5 +225,27 @@ function removeCompletedRows(board: Board): Board {
     }
   }
 
-  return nextBoard;
+  return [nextBoard, linesRemoved];
+}
+
+/**
+ * @see https://tetris.fandom.com/wiki/Scoring
+ */
+function scoreRows(linesRemoved: number, level: number) {
+  switch (linesRemoved) {
+    case 0:
+      return 0;
+    case 1:
+      return 40 * (level + 1);
+    case 2:
+      return 100 * (level + 1);
+    case 3:
+      return 300 * (level + 1);
+    case 4:
+      return 1200 * (level + 1);
+    default:
+      // Should not be possible to reach this case, as the number of lines removed can only be
+      // between 0 and 4.
+      return 0;
+  }
 }
