@@ -10,6 +10,7 @@ interface Board {
   columns: number;
   fill: number[];
   length: number;
+  linesCleared: number;
 }
 
 /**
@@ -22,6 +23,7 @@ export function create(height: number, width: number): Board {
     columns: width,
     fill: filled,
     length: filled.length,
+    linesCleared: 0,
   };
 }
 
@@ -77,13 +79,15 @@ export function moveDown(
   let linesRemoved;
   let nextBoard = commitTetrominoToBoard(board, current, position, 1);
   [nextBoard, linesRemoved] = removeCompletedRows(nextBoard);
+  nextBoard.linesCleared = nextBoard.linesCleared + linesRemoved;
 
   const [nextShape, nextRandomizer] = Randomizer.next(randomizer);
   const nextNext = Tetromino.create(nextShape);
   const nextPosition = Point.create(3, 0);
   const nextScore = score + scoreRows(linesRemoved, level);
+  const nextLevel = Math.floor(nextBoard.linesCleared / 10);
 
-  return [nextBoard, next, level, nextNext, nextPosition, nextRandomizer, nextScore, state];
+  return [nextBoard, next, nextLevel, nextNext, nextPosition, nextRandomizer, nextScore, state];
 }
 
 /**

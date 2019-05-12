@@ -28,7 +28,7 @@ function createInitialState() {
     board: Board.create(20, 10),
     current: Tetromino.create(firstShape),
     interval: 750,
-    level: 1,
+    level: 0,
     next: Tetromino.create(secondShape),
     position: Point.create(3, 0),
     randomizer: randomizer,
