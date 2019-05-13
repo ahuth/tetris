@@ -1,8 +1,7 @@
 {
   "name": "tetris",
-  "version": "0.1.0",
-  "license": "MIT",
   "private": true,
+  "license": "MIT",
   "description": "Classic Tetris game",
   "homepage": "https://ahuth.github.io/tetris",
   "repository": {
