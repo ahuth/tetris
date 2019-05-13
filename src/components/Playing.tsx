@@ -21,7 +21,7 @@ export default function Playing({ dispatch, state }: Props) {
   useKeyHandler('ArrowDown', dispatchDown);
   useKeyHandler('ArrowLeft', dispatchLeft);
   useKeyHandler('ArrowRight', dispatchRight);
-  useInterval(state.interval, dispatchTick);
+  useInterval(intervalFromLevel(state.level), dispatchTick);
 
   return (
     <div style={styles.container}>
@@ -36,3 +36,15 @@ const styles = {
     display: 'flex',
   },
 };
+
+function intervalFromLevel(level: number) {
+  switch (level) {
+    case 0: return 750;
+    case 1: return 650;
+    case 2: return 550;
+    case 3: return 450;
+    case 4: return 350;
+    case 5: return 250;
+    default: return 150;
+  }
+}
