@@ -22,7 +22,7 @@ export default function Playing({ dispatch, state }: Props) {
   useKeyHandler('ArrowDown', dispatchDown);
   useKeyHandler('ArrowLeft', dispatchLeft);
   useKeyHandler('ArrowRight', dispatchRight);
-  useInterval(intervalFromLevel(state.level), dispatchTick);
+  useInterval(dispatchTick, intervalFromLevel(state.level));
 
   return (
     <div style={styles.container}>
