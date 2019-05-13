@@ -2,7 +2,7 @@ import { fill } from 'lodash';
 import * as Point from './point';
 import * as Randomizer from './randomizer';
 import * as Tetromino from './tetromino';
-import { StateTypes } from '../reducer';
+import { StateTypes } from './game';
 
 export type Type = Board;
 

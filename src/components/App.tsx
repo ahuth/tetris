@@ -1,7 +1,8 @@
 import React, { useReducer } from 'react';
 import Lost from './Lost';
 import Playing from './Playing';
-import reducer, { initialState, StateTypes } from '../reducer';
+import reducer, { initialState } from '../reducer';
+import { StateTypes } from '../utils/game';
 
 export default function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
