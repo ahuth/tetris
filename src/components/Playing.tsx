@@ -3,11 +3,12 @@ import MainBoard from './MainBoard';
 import ScoreBoard from './ScoreBoard';
 import useKeyHandler from '../hooks/useKeyHandler';
 import useInterval from '../hooks/useInterval';
-import { ActionTypes, State } from '../reducer';
+import { ActionTypes } from '../reducer';
+import { Type as Game } from '../utils/game';
 
 type Props = {
   dispatch: React.Dispatch<ActionTypes>,
-  state: State,
+  state: Game,
 }
 
 export default function Playing({ dispatch, state }: Props) {

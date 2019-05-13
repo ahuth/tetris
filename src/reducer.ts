@@ -11,11 +11,7 @@ export enum ActionTypes {
   Tick = 'tick',
 };
 
-export const initialState = Game.create();
-
-export type State = typeof initialState;
-
-export default function reducer(state: State, action: ActionTypes) {
+export default function reducer(state: Game.Type, action: ActionTypes) {
   switch (action) {
     case ActionTypes.Tick:
     case ActionTypes.MoveDown:
