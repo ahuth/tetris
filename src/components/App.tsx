@@ -13,7 +13,7 @@ export default function App() {
     case Game.StateTypes.Lost:
       return <Lost dispatch={dispatch} state={state} />;
     case Game.StateTypes.Playing:
-      return <Playing dispatch={dispatch} state={state} />
+      return <Playing dispatch={dispatch} state={state} />;
     default:
       return null;
   }

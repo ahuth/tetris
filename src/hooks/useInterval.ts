@@ -5,7 +5,7 @@ export default function useInterval(callback: () => void, delay: number) {
 
   useEffect(() => {
     callbackRef.current = callback;
-  }, [callback])
+  }, [callback]);
 
   useEffect(() => {
     const id = setInterval(callbackRef.current, delay);

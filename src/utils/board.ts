@@ -147,7 +147,7 @@ function isValid(board: Board, tetromino: Tetromino.Type, position: Point.Type) 
       if (position.x + c < 0 || position.x + c > maxColIndex) { return false; }
 
       // If the vertical position is off the board, it's not valid.
-      if (position.y + r < 0 || position.y + r > maxRowIndex) { return false }
+      if (position.y + r < 0 || position.y + r > maxRowIndex) { return false; }
 
       // If this part of the shape is over a part of the board that's "on", it's not valid.
       const index = getBoardIndexFromPosition(board, Point.create(position.x + c, position.y + r));

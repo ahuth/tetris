@@ -27,7 +27,7 @@ export default function Matrix({
   return (
     <div style={styles}>
       {Board.map(boardWithTetromino, (fill: number, i: number) => {
-        return <Block color={colors[fill]} key={`${i}-${fill}`} />
+        return <Block color={colors[fill]} key={`${i}-${fill}`} />;
       })}
     </div>
   );
