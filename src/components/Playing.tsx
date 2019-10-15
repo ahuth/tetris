@@ -3,6 +3,7 @@ import MainBoard from './MainBoard';
 import ScoreBoard from './ScoreBoard';
 import useKeyHandler from '../hooks/useKeyHandler';
 import useInterval from '../hooks/useInterval';
+import useTouchHandler from '../hooks/useTouchHandler';
 import { ActionTypes } from '../reducer';
 import { Type as Game } from '../utils/game';
 
@@ -22,6 +23,11 @@ export default function Playing({ dispatch, state }: Props) {
   useKeyHandler('ArrowDown', dispatchDown);
   useKeyHandler('ArrowLeft', dispatchLeft);
   useKeyHandler('ArrowRight', dispatchRight);
+
+  useTouchHandler('swipeleft', dispatchLeft);
+  useTouchHandler('swiperight', dispatchRight);
+  useTouchHandler('tap', dispatchRotate);
+
   useInterval(dispatchTick, intervalFromLevel(state.level));
 
   return (
