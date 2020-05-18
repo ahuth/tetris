@@ -3,7 +3,7 @@ import MainBoard from './MainBoard';
 import ScoreBoard from './ScoreBoard';
 import useKeyHandler from '../hooks/useKeyHandler';
 import { ActionTypes } from '../reducer';
-import { Type as Game } from '../utils/game';
+import { Type as Game } from '../game';
 
 type Props = {
   dispatch: React.Dispatch<ActionTypes>,

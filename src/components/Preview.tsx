@@ -1,8 +1,8 @@
 import React from 'react';
 import Matrix from './Matrix';
-import * as Board from '../utils/board';
-import * as Point from '../utils/point';
-import { Type as Tetromino } from '../utils/tetromino';
+import * as Board from '../board';
+import * as Point from '../point';
+import { Type as Tetromino } from '../tetromino';
 
 const board = Board.create(5, 5);
 const position = Point.create(1, 1);

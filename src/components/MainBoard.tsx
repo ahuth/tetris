@@ -1,8 +1,8 @@
 import React from 'react';
 import Matrix from './Matrix';
-import { Type as Board } from '../utils/board';
-import { Type as Point } from '../utils/point';
-import { Type as Tetromino } from '../utils/tetromino';
+import { Type as Board } from '../board';
+import { Type as Point } from '../point';
+import { Type as Tetromino } from '../tetromino';
 
 type Props = {
   board: Board,

@@ -2,7 +2,7 @@ import React, { useReducer } from 'react';
 import Lost from './Lost';
 import Playing from './Playing';
 import reducer from '../reducer';
-import * as Game from '../utils/game';
+import * as Game from '../game';
 
 const initialState = Game.create();
 

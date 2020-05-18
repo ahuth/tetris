@@ -1,8 +1,8 @@
 import React, { useMemo } from 'react';
 import Block from './Block';
-import * as Board from '../utils/board';
-import { Type as Point } from '../utils/point';
-import { Type as Tetromino } from '../utils/tetromino';
+import * as Board from '../board';
+import { Type as Point } from '../point';
+import { Type as Tetromino } from '../tetromino';
 
 type Props = {
   board: Board.Type,

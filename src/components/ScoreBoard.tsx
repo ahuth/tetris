@@ -1,6 +1,6 @@
 import React from 'react';
 import Preview from './Preview';
-import { Type as Tetromino } from '../utils/tetromino';
+import { Type as Tetromino } from '../tetromino';
 
 type Props = {
   children?: React.ReactNode,

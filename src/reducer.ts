@@ -1,4 +1,4 @@
-import * as Game from './utils/game';
+import * as Game from './game';
 
 export enum ActionTypes {
   MoveDown = 'down',
